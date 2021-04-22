@@ -33,9 +33,7 @@ class RegressionTree():
         max_var_red = -np.inf
         if num_samples>=self.min_samples_split :
             for feature_index in range(num_features):
-                possible_thresholds=[np.quantile(dataset[:, feature_index],1/i) for i in range(1,20)]
-                
-    #            possible_thresholds=np.unique(dataset[:, feature_index])
+                possible_thresholds=np.unique(dataset[:, feature_index])
                 for  threshold in possible_thresholds:
                     dataset_left, dataset_right = self.split(dataset, feature_index, threshold)
                     if len(dataset_left)>2 and len(dataset_right)>2:
